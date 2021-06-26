@@ -7,8 +7,8 @@ import asyncio
 
 
 # connecting to database
-# db_string = os.getenv("DB_STRING")
-client_db = MongoClient('mongodb+srv://haider:4743@cluster0.wqbtx.mongodb.net/serverdata?retryWrites=true&w=majority',authSource='admin')
+db_string = os.getenv("DB_STRING")
+client_db = MongoClient(db_string,authSource='admin')
 db = client_db.serverdata.data
 
 
@@ -29,7 +29,7 @@ async def on_message(message):
 	msg = message.content
 
 
-	if msg.startswith('$set'):
+	if msg.startswith('$setup'):
 		if (message.author.guild_permissions.administrator):
 			server_id =  message.guild.id
 			data = db.find_one({ "server_id": server_id})
@@ -67,7 +67,7 @@ async def on_message(message):
 			except asyncio.TimeoutError:
 				return await message.channel.send("```Oops! You took too long to respond. Try again```")
 
-			await message.channel.send("```Reply with the response to the shortcut : ```")
+			await message.channel.send("```Reply with the response to the shortcut: ```")
 			try:
 				m = await client.wait_for("message", check=check, timeout=300)
 			except asyncio.TimeoutError:
@@ -160,4 +160,4 @@ def common_role(list1, list2):
 		
 
 token = os.getenv("DISCORD_BOT_TOKEN")
-client.run('ODU4MjM1MjcwNTgyODk0NTky.YNbL4Q.mUOg17vXrVv78I_ymCEodntBzyY')
+client.run(token)
