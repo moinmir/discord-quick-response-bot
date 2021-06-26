@@ -1,4 +1,4 @@
-# discord-shortcut-response-bot
+# discord-quick-response-bot
 Discord bot which lets you create shortcut messages/emojis to display desired messages.
 
 <a href="https://discord.com/api/oauth2/authorize?client_id=858235270582894592&permissions=3221744704&scope=bot">Invite</a>
