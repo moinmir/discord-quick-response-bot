@@ -130,7 +130,7 @@ def fetch_shortcut(shortcut, server_data):
 		shortcuts = server_data["shortcut"]
 		for i in shortcuts:
 			if i[0] == shortcut:
-				return "```" + i[1] + "```"
+				return i[1]
 			
 	
 
